@@ -18,10 +18,8 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model, @LoginUser SessionUser user) {
-        model.addAttribute("posts", postsService.findAllDesc());
-
         if (user != null) model.addAttribute("loginUserName", user.getName());
-        return "index";
+        return "foslog-index";
     }
 
     @GetMapping("/posts/save")

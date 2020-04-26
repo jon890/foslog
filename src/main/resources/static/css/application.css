@@ -1,0 +1,60 @@
+a {
+    text-decoration: none;
+}
+
+.header {
+    display:grid;
+    grid-template-columns: 20% 50% 30%;
+    width:100%;
+    padding:20px;
+    background-color:lightgrey;
+}
+
+.header__title {
+    margin-left:15px;
+}
+
+.header__title a {
+    font-size:24px;
+    color:black;
+}
+
+.header__menu ul {
+    display:flex;
+}
+
+.header__menu ul li {
+    margin-right:20px;
+}
+
+.header__login {
+    margin-right:45px;
+    font-size:15px;
+    text-align:right;
+}
+
+.profile--wrapper {
+    display:flex;
+    padding:30px;
+}
+
+.profile__left-menu {
+    width:30%;
+    margin-right:5%;
+}
+
+.profile__left-menu ul li {
+    margin-bottom:10px;
+}
+
+.profile__left-menu ul[data-depth='1'] li{
+    margin-left:10px;
+}
+
+.profile__left-menu ul[data-depth='2'] li{
+    margin-left:20px;
+}
+
+.profile__contents {
+    width:65%;
+}

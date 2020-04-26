@@ -1,8 +1,33 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>스프링 부트 웹서비스</title>
+    <title>Foslog</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/application.css">
 </head>
 <body>
+
+    <header class="header">
+        <div class="header__title">
+            <a href="/">foslog</a>
+        </div>
+
+        <div class="header__menu">
+            <ul>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="#">Dev. Note</a></li>
+                <li><a href="#">Snack In the Garden</a></li>
+            </ul>
+        </div>
+
+        <div class="header__login">
+            {{#loginUserName}}
+                <span>{{loginUserName}}님 환영합니다</span>
+                <a href="#">Logout</a>
+            {{/loginUserName}}
+            {{^loginUserName}}
+                <a href="#">Login</a>
+            {{/loginUserName}}
+        </div>
+    </header>
