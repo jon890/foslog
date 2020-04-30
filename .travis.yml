@@ -14,12 +14,6 @@ cache:
 
 script: "./gradlew clean build"
 
-# CI 실행 완료시 메일로 알람
-notifications:
-  email:
-    recipients:
-      - jon89071@gmail.com
-
 before_deploy:
   - zip -r foslog *
   - mkdir -p deploy
@@ -35,3 +29,20 @@ deploy:
     acl: private # zip 파일 접근을 private로 설정
     local_dir: deploy # before_deploy에서 생성한 디렉토리
     wait-until-deploy: true
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: foslog-build
+    key: foslog.zip
+    bundle-type: zip # 압축 확장자
+    application: foslog # 웹 콘솔에서 등록한 CodeDeploy 애플리케이션
+    deployment-group: foslog-group # 웹 콘솔에서 등록한 CodeDeploy 배포 그룹
+    region: ap-northeast-2
+    wait-until-deployed: true
+
+# CI 실행 완료시 메일로 알람
+notifications:
+  email:
+    recipients:
+      - jon89071@gmail.com
