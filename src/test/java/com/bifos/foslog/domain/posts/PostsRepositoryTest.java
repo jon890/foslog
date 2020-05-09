@@ -33,7 +33,7 @@ public class PostsRepositoryTest {
         postsRepository.save(Posts.builder()
                     .title(title)
                     .content(content)
-                    .author("jon89071@gmail.com")
+                    .tags("Spring,JavaScript")
                     .build());
 
         //when
@@ -52,7 +52,7 @@ public class PostsRepositoryTest {
         postsRepository.save(Posts.builder()
             .title("title")
             .content("content")
-            .author("author")
+            .tags("Spring")
             .build());
 
         //when
