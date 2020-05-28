@@ -22,14 +22,18 @@ public class Posts extends BaseTimeEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    @Column
     private String tags;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private PostsType type;
+
     @Builder
-    public Posts(String title, String content, String tags) {
+    public Posts(String title, String content, String tags, PostsType type) {
         this.title = title;
         this.content = content;
         this.tags = tags;
+        this.type = type;
     }
 
     public void update(String title, String content) {

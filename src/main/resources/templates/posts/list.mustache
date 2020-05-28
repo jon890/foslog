@@ -1,0 +1,21 @@
+{{>layout/header}}
+
+<!-- Left Menu -->
+
+<!-- Contents-->
+<div class="contents">
+    <form name="search-form" method="get">
+        <input type="hidden" name="type" value="{{type}}"/>
+    </form>
+
+    <span class="posts-insert-button">글쓰기</span>
+    <div class="posts-wrapper">
+        {{#posts}}
+            <div class="posts__thumbnail"></div>
+            <div class="posts__title" data-id="{{id}}">{{title}}</div>
+            <div class="posts__contents">{{content}}</div>
+        {{/posts}}
+    </div>
+</div>
+
+{{>layout/footer}}
