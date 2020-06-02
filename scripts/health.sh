@@ -15,7 +15,9 @@ sleep 10
 for RETRY_COUNT in {1..10}
 do
   RESPONSE=$(curl -s http://localhost:${IDLE_PORT}/profile)
-  UP_COUNT=$(echo ${RESPONSE} | grep 'real' | wc -1)
+  UP_COUNT=$(echo ${RESPONSE} | grep 'real' | wc -l)
+  # wc - (word count) 사용자가 지정한 파일의 행, 단어, 문자수를 세는 프로그램
+  # wc -l (행)
 
   if [ ${UP_COUNT} -ge 1 ]
   then # $up_count >= 1 ("real" 문자열이 있는지 검증
