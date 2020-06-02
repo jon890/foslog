@@ -2,6 +2,7 @@ package com.bifos.foslog.web;
 
 import com.bifos.foslog.domain.posts.Posts;
 import com.bifos.foslog.domain.posts.PostsRepository;
+import com.bifos.foslog.domain.posts.PostsType;
 import com.bifos.foslog.web.dto.PostsSaveRequestDto;
 import com.bifos.foslog.web.dto.PostsUpdateRequestDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -67,6 +68,7 @@ public class PostsApiControllerTest {
                 .title(title)
                 .content(content)
                 .tags("Spring")
+                .type(PostsType.DEVNOTE)
                 .build();
 
         String url = "http://localhost:" + port + "/api/v1/posts";
@@ -91,6 +93,7 @@ public class PostsApiControllerTest {
             .title("title")
             .content("content")
             .tags("Spring")
+            .type(PostsType.DEVNOTE)
             .build());
 
         Long updatedId = savedPosts.getId();

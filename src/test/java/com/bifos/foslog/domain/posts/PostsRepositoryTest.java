@@ -34,6 +34,7 @@ public class PostsRepositoryTest {
                     .title(title)
                     .content(content)
                     .tags("Spring,JavaScript")
+                    .type(PostsType.DEVNOTE)
                     .build());
 
         //when
@@ -53,6 +54,7 @@ public class PostsRepositoryTest {
             .title("title")
             .content("content")
             .tags("Spring")
+            .type(PostsType.DEVNOTE)
             .build());
 
         //when
