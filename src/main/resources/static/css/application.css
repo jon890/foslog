@@ -1,39 +1,40 @@
 a {
     text-decoration: none;
-    color:black;
+    color: black;
 }
 
 .header {
-    display:grid;
+    display: grid;
     grid-template-columns: 20% 50% 30%;
-    width:100%;
-    height:20px;
-    padding:20px;
-    background-color:lightgrey;
+    width: 100%;
+    height: 20px;
+    padding: 20px;
+    background-color: lightgrey;
 }
 
 .header__title {
     position: relative;
-    margin-left:15px;
+    margin-left: 15px;
 }
 
 .header__title a {
-    font-size:24px;
+    font-size: 24px;
 }
 
 .header__menu ul {
-    display:flex;
+    display: flex;
 }
 
 .header__menu ul li {
-    margin-right:20px;
+    margin-right: 20px;
 }
 
 .header__login {
-    margin-right:45px;
-    font-size:15px;
-    text-align:right;
+    margin-right: 45px;
+    font-size: 15px;
+    text-align: right;
 }
+
 /*
 
 .profile--wrapper {
@@ -68,17 +69,80 @@ a {
 */
 
 .contents {
-    margin:30px;
+    margin: 30px;
     border: 1px solid black;
     width: 70%;
-    min-height:600px;
+    min-height: 600px;
 }
 
 .posts-insert-button {
     background-color: mediumaquamarine;
-    padding:5px;
-    cursor:pointer;
+    padding: 5px;
+    cursor: pointer;
 }
 
 .posts-insert-button:hover {
+}
+
+.posts-insert-wrapper {
+    margin: 5px;
+}
+
+.posts-insert-wrapper .insert-title {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.posts-insert-wrapper .insert-table {
+    width: 100%;
+    border: 1px solid black;
+    margin-bottom: 15px;
+}
+
+.posts-insert-wrapper .insert-table tr th {
+    vertical-align: middle;
+    background-color: lightgrey;
+    border: 1px solid black;
+}
+
+.posts-insert-wrapper .insert-table input,
+.posts-insert-wrapper .insert-table textarea {
+    margin-left: 2%;
+    width: 95%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.posts-insert-wrapper .insert-table input {
+    height: 30px;
+}
+
+.posts-insert-wrapper .insert-table textarea {
+    height: 500px;
+}
+
+.button-wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.button-wrapper .button {
+    padding: 10px 20px;
+    border-radius: 15px;
+    color: white;
+}
+
+.button-wrapper .blue {
+    background-color: dodgerblue;
+}
+
+.button-wrapper .red {
+    background-color: indianred;
+}
+
+.button-wrapper .center {
+    padding: 10px 20px;
+    text-align: center;
 }
