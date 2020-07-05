@@ -53,6 +53,9 @@ public class SnackInTheGardenScheduler {
             message.append(" 까지 입니다!");
         }
 
+        System.out.println(adminGoogleEmail);
+        System.out.println(adminGooglePassword);
+
         Gmail.send(
                 adminGoogleEmail,
                 adminGooglePassword,
