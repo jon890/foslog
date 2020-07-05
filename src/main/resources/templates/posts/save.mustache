@@ -4,24 +4,26 @@
     <div class="posts-insert-wrapper">
         <h1 class="insert-title">글쓰기</h1>
 
-        <table class="insert-table">
-            <colgroup>
-                <col style="width:15%"/>
-                <col style=""/>
-            </colgroup>
-            <tr>
-                <th>제목</th>
-                <td><input type="text" name="title"></td>
-            </tr>
-            <tr>
-                <th>내용</th>
-                <td><textarea name="content"></textarea></td>
-            </tr>
-            <tr>
-                <th>Tags</th>
-                <td><input type="text" name="tags"></td>
-            </tr>
-        </table>
+        <form name="posts-save-form" action="/api/v1/posts" method="post">
+            <table class="insert-table">
+                <colgroup>
+                    <col style="width:15%"/>
+                    <col style=""/>
+                </colgroup>
+                <tr>
+                    <th>제목</th>
+                    <td><input type="text" name="title"></td>
+                </tr>
+                <tr>
+                    <th>내용</th>
+                    <td><textarea name="content"></textarea></td>
+                </tr>
+                <tr>
+                    <th>Tags</th>
+                    <td><input type="text" name="tags"></td>
+                </tr>
+            </table>
+        </form>
 
         <div class="button-wrapper">
             <div class="center">
@@ -32,4 +34,5 @@
     </div>
 </div>
 
+<script src="/js/app/posts/save.js"></script>
 {{>layout/footer}}
