@@ -4,10 +4,12 @@ import com.bifos.foslog.domain.snackinthegarden.Customer;
 import com.bifos.foslog.service.snackinthegarden.SnackInTheGardenService;
 import com.bifos.foslog.util.Gmail;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Component
@@ -15,18 +17,32 @@ import java.util.List;
 public class SnackInTheGardenScheduler {
 
     private final SnackInTheGardenService snackInTheGardenService;
-    private final Environment environment;
+
+    @Value("${snackinthegarden.notice.day}")
+    private String noticeDay;
+
+    @Value("${snackinthegarden.notice.recipient.email}")
+    private String recipientEmail;
+
+    @Value("${snackinthegarden.admin.google.email}")
+    private String adminGoogleEmail;
+
+    @Value("${snackinthegarden.admin.google.password}")
+    private String adminGooglePassword;
 
     /**
      * 매일 새벽 한 시에 계약일이 곧 만료되는 사람을 알린다
      */
-    @Scheduled(cron = "10 * * * * *", zone = "Asia/Seoul")
+    @Scheduled(cron = "0 0 10 * * *", zone = "Asia/Seoul")
     public void noticeExpirationDateWithInXDays() throws Exception {
 
-        String title = "[SNACK-IN-THE-GARDEN] 오늘의 곧 계약 만료 리스트";
+        LocalDate today = LocalDate.now();
 
-        int noticeDate = Integer.parseInt(environment.getProperty("snackinthegarden.expiration.day"));
-        List<Customer> customers = snackInTheGardenService.findAllExpirationDateWithInXDays(noticeDate);
+        String title = "[SNACK-IN-THE-GARDEN]" +
+                today +
+                " 다가오는 계약종료 리스트";
+
+        List<Customer> customers = snackInTheGardenService.findAllExpirationDateWithInXDays(Integer.parseInt(noticeDay));
 
         StringBuilder message = new StringBuilder();
 
@@ -39,9 +55,9 @@ public class SnackInTheGardenScheduler {
         }
 
         Gmail.send(
-                environment.getProperty("snackinthegarden.email.from"),
-                environment.getProperty("snackinthegarden.email.password"),
-                environment.getProperty("snackinthegarden.email.to"),
+                adminGoogleEmail,
+                adminGooglePassword,
+                recipientEmail,
                 "",
                 title,
                 message.toString());
