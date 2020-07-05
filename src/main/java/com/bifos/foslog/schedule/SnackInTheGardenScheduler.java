@@ -32,7 +32,7 @@ public class SnackInTheGardenScheduler {
     /**
      * 매일 새벽 한 시에 계약일이 곧 만료되는 사람을 알린다
      */
-    @Scheduled(cron = "0 0/5 * * * *", zone = "Asia/Seoul")
+    @Scheduled(cron = "0 0 10 * * *", zone = "Asia/Seoul")
     public void noticeExpirationDateWithInXDays() throws Exception {
 
         LocalDate today = LocalDate.now();
@@ -43,18 +43,21 @@ public class SnackInTheGardenScheduler {
 
         List<Customer> customers = snackInTheGardenService.findAllExpirationDateWithInXDays(Integer.parseInt(noticeDay));
 
-        StringBuilder message = new StringBuilder();
+        StringBuilder message = new StringBuilder("<h1>" + today + " 다가오는 계약 종료 리스트</h1>");
+        message.append("<br>");
 
         for (Customer c : customers) {
-            message.append(c.getName());
+            message.append("<p>");
+            message.append("<strong>").append(c.getName()).append("</strong>");
             message.append(" 고객님은 ");
             message.append("주문 날짜가 ");
-            message.append(c.getExpirationDate());
+            message.append("<span style=`font-weight:600; color:red;`>").append(c.getExpirationDate()).append("</span>");
             message.append(" 까지 입니다!");
+            message.append("</p>");
         }
 
-        System.out.println(adminGoogleEmail);
-        System.out.println(adminGooglePassword);
+//        System.out.println(adminGoogleEmail);
+//        System.out.println(adminGooglePassword);
 
         Gmail.send(
                 adminGoogleEmail,
@@ -62,6 +65,6 @@ public class SnackInTheGardenScheduler {
                 recipientEmail,
                 "",
                 title,
-                message.toString());
+                message.toString().toString());
     }
 }
