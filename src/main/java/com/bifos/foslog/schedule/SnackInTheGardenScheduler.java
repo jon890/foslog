@@ -32,7 +32,7 @@ public class SnackInTheGardenScheduler {
     /**
      * 매일 새벽 한 시에 계약일이 곧 만료되는 사람을 알린다
      */
-    @Scheduled(cron = "0 5 * * * *", zone = "Asia/Seoul")
+    @Scheduled(cron = "0 0/5 * * * *", zone = "Asia/Seoul")
     public void noticeExpirationDateWithInXDays() throws Exception {
 
         LocalDate today = LocalDate.now();
