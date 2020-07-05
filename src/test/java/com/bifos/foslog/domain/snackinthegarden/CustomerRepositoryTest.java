@@ -34,7 +34,7 @@ public class CustomerRepositoryTest {
         // given
         String name = "김유선";
         String location = "동림동 운암산 풍경채 101동 203호";
-        LocalDate expirationDate = LocalDate.of(2020, Month.JULY, 07);
+        LocalDate expirationDate = LocalDate.of(2020, Month.JULY, 7);
 
         customerRepository.save(Customer.builder()
                 .name(name)
@@ -61,15 +61,15 @@ public class CustomerRepositoryTest {
 
         String name1 = "김유선";
         String location1 = "동림동 운암산 풍경채 101동 203호";
-        LocalDate expirationDate1 = LocalDate.of(2020, Month.JULY, 7);
+        LocalDate expirationDate1 = LocalDate.now().plusDays(2);
 
         String name2 = "차은혜";
         String location2 = "용봉동 가디언빌라 204호";
-        LocalDate expirationDate2 = LocalDate.of(2020, Month.JULY, 6);
+        LocalDate expirationDate2 = LocalDate.now().minusDays(1);
 
         String name3 = "이혜인";
         String location3 = "용봉동 214번길 6, 아라맨션 B동 501호";
-        LocalDate expirationDate3 = LocalDate.of(2020, Month.JULY, 8);
+        LocalDate expirationDate3 = LocalDate.now().plusDays(3);
 
         customerRepository.save(Customer.builder()
                 .name(name1)
@@ -90,10 +90,10 @@ public class CustomerRepositoryTest {
                 .build());
 
         // when
-        List<Customer> customers = customerRepository.findAllExpirationDateWithInXDays(noticeDate);
+        List<Customer> customers = customerRepository.findAllExpirationDateWithInXDays(today, noticeDate);
 
         // then
-        assertThat(customers.size()).isEqualTo(2);
+        assertThat(customers.size()).isEqualTo(1);
         System.out.println(customers);
     }
 

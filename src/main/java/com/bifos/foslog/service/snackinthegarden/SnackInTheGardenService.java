@@ -28,7 +28,7 @@ public class SnackInTheGardenService {
     public List<Customer> findAllExpirationDateWithInXDays(int x) {
         LocalDate today = LocalDate.now();
         LocalDate noticeDate = today.plusDays(x);
-        return customerRepository.findAllExpirationDateWithInXDays(noticeDate);
+        return customerRepository.findAllExpirationDateWithInXDays(today, noticeDate);
     }
 
     @Transactional
