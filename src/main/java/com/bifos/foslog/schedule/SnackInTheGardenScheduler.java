@@ -5,7 +5,6 @@ import com.bifos.foslog.service.snackinthegarden.SnackInTheGardenService;
 import com.bifos.foslog.util.Gmail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 

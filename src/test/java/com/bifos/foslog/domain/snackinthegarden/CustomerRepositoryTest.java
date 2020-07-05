@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.env.Environment;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
@@ -20,9 +19,6 @@ public class CustomerRepositoryTest {
 
     @Autowired
     CustomerRepository customerRepository;
-
-    @Autowired
-    Environment environment;
 
     @After
     public void cleanup() {
@@ -97,15 +93,4 @@ public class CustomerRepositoryTest {
         System.out.println(customers);
     }
 
-    @Test
-    public void Application_SnackInTheGarden의_환경변수를_읽는다() {
-        // given
-        String expirationDate = "snackinthegarden.expiration.date";
-
-        // when
-        String getExpirationDate = environment.getProperty(expirationDate);
-
-        // then
-        assertThat(getExpirationDate).isEqualTo("2");
-    }
 }
