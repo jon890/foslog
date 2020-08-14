@@ -8,15 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
 @RequiredArgsConstructor
+@Controller
 public class SnackInTheGardenController {
 
     private final SnackInTheGardenService snackInTheGardenService;
 
     @GetMapping("/snack-in-the-garden")
     public String moveIndex() {
-        return "/snack-in-the-garden/index";
+        return "snack-in-the-garden/index";
     }
 
     @GetMapping("/snack-in-the-garden/customer/list")
@@ -25,7 +25,7 @@ public class SnackInTheGardenController {
             model.addAttribute("loginUserName", user.getName());
 
         model.addAttribute("customer-list", snackInTheGardenService.findAllExpirationDateAsc());
-        return "/snack-in-the-garden/customer/list";
+        return "snack-in-the-garden/customer/list";
     }
 
     @GetMapping("/snack-in-the-garden/customer/add")
@@ -33,6 +33,6 @@ public class SnackInTheGardenController {
         if (user != null)
             model.addAttribute("loginUserName", user.getName());
 
-        return "/snack-in-the-garden/customer/add";
+        return "snack-in-the-garden/customer/add";
     }
 }
