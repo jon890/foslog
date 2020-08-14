@@ -45,7 +45,10 @@ public class Customer extends BaseTimeEntity {
 
     /**
      * 거래 종료 날짜 (샐러드 계약 만료 일자)
+     *
+     * {@link Contract} 를 사용할 것
      */
+    @Deprecated
     @Column(nullable = false)
     private LocalDate expirationDate;
 

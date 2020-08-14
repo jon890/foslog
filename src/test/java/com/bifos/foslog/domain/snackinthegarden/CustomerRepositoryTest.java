@@ -1,5 +1,7 @@
 package com.bifos.foslog.domain.snackinthegarden;
 
+import com.bifos.foslog.domain.snackinthegarden.Customer;
+import com.bifos.foslog.domain.snackinthegarden.CustomerRepository;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
