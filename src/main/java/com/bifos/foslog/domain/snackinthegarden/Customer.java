@@ -8,7 +8,6 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
@@ -30,7 +29,7 @@ public class Customer extends BaseTimeEntity {
      * 고객 주소
      */
     @Column(nullable = false)
-    private String location;
+    private String address;
 
     /**
      * 고객 연락처
@@ -50,10 +49,13 @@ public class Customer extends BaseTimeEntity {
     @Column(nullable = false)
     private LocalDate expirationDate;
 
+    @Column
+    private Status status;
+
     @Builder
     public Customer(String name, String location, String phoneNumber, String memo, LocalDate expirationDate) {
         this.name = name;
-        this.location = location;
+        this.address = location;
         this.phoneNumber = phoneNumber;
         this.memo = memo;
         this.expirationDate = expirationDate;

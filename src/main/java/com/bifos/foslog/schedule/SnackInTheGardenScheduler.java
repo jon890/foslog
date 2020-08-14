@@ -46,18 +46,19 @@ public class SnackInTheGardenScheduler {
         StringBuilder message = new StringBuilder("<h1>" + today + " 다가오는 계약 종료 리스트</h1>");
         message.append("<br>");
 
-        for (Customer c : customers) {
-            message.append("<p>");
-            message.append("<strong>").append(c.getName()).append("</strong>");
-            message.append(" 고객님은 ");
-            message.append("주문 날짜가 ");
-            message.append("<span style=`font-weight:600; color:red;`>").append(c.getExpirationDate()).append("</span>");
-            message.append(" 까지 입니다!");
-            message.append("</p>");
+        if (customers.size() == 0) {
+            message.append("곧 계약이 종료되는 사람이 없습니다");
+        } else {
+            for (Customer c : customers) {
+                message.append("<p>");
+                message.append("<strong>").append(c.getName()).append("</strong>");
+                message.append(" 고객님은 ");
+                message.append("주문 날짜가 ");
+                message.append("<span style=`font-weight:600; color:red;`>").append(c.getExpirationDate()).append("</span>");
+                message.append(" 까지 입니다!");
+                message.append("</p>");
+            }
         }
-
-//        System.out.println(adminGoogleEmail);
-//        System.out.println(adminGooglePassword);
 
         Gmail.send(
                 adminGoogleEmail,
@@ -65,6 +66,6 @@ public class SnackInTheGardenScheduler {
                 recipientEmail,
                 "",
                 title,
-                message.toString().toString());
+                message.toString());
     }
 }

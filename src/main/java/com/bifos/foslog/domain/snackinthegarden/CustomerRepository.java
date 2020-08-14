@@ -12,6 +12,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     @Query("SELECT c FROM Customer c ORDER BY c.id DESC")
     List<Customer> findAllDesc();
 
+    @Query("SELECT c FROM Customer c ORDER BY c.expirationDate ASC")
+    List<Customer> findAllExpirationDateAsc();
+
     @Query("SELECT c " +
             "FROM Customer c " +
             "WHERE c.expirationDate <= :noticeDate AND c.expirationDate >= :today")

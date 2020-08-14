@@ -122,27 +122,3 @@ a {
 .posts-insert-wrapper .insert-table textarea {
     height: 500px;
 }
-
-.button-wrapper {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.button-wrapper .button {
-    padding: 10px 20px;
-    border-radius: 15px;
-    color: white;
-}
-
-.button-wrapper .blue {
-    background-color: dodgerblue;
-}
-
-.button-wrapper .red {
-    background-color: indianred;
-}
-
-.button-wrapper .center {
-    padding: 10px 20px;
-    text-align: center;
-}
