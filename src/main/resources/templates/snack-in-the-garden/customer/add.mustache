@@ -6,39 +6,41 @@
     <h1 class="contents__title">회원 추가</h1>
 
     <article>
-        <table class="table-layout">
-            <tr>
-                <th class="table__title">이름</th>
-                <td><input type="text" name="name"/></td>
-            </tr>
+        <form name="customer-form">
+            <table class="table-list">
+                <tr>
+                    <th class="table__title">이름</th>
+                    <td><input type="text" name="name"/></td>
+                </tr>
 
-            <tr>
-                <th class="table__title">주소</th>
-                <td><input type="text" name="address"/></td>
-            </tr>
+                <tr>
+                    <th class="table__title">주소</th>
+                    <td><input type="text" name="address"/></td>
+                </tr>
 
-            <tr>
-                <th class="table__title">연락처</th>
-                <td ><input type="text" name="phoneNumber"/></td>
-            </tr>
+                <tr>
+                    <th class="table__title">연락처</th>
+                    <td><input type="text" name="phoneNumber"/></td>
+                </tr>
 
-            <tr>
-                <th class="table__title">메모</th>
-                <td><textarea name="memo"></textarea></td>
-            </tr>
+                <tr>
+                    <th class="table__title">메모</th>
+                    <td><textarea name="memo"></textarea></td>
+                </tr>
 
-            <tr>
-                <th class="table__title">계약 기간</th>
-                <td class="fos-calendar"></td>
-            </tr>
-        </table>
+                <tr>
+                    <th class="table__title">계약 기간</th>
+                    <td class="fos-calendar"></td>
+                </tr>
+            </table>
 
-        <div class="button-wrapper">
-            <div class="right">
-                <a href="#" class="button red backButton">뒤로</a>
-                <a href="#" class="button blue submitButton">작성 완료</a>
+            <div class="button-wrapper">
+                <div class="right">
+                    <a href="#" class="button red backButton">뒤로</a>
+                    <a href="#" class="button blue submitButton">작성 완료</a>
+                </div>
             </div>
-        </div>
+        </form>
     </article>
 </div>
 

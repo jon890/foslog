@@ -4,42 +4,53 @@ import com.bifos.foslog.domain.snackinthegarden.Customer;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import java.time.LocalDate;
-import java.time.Month;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
+@ToString
 public class CustomerSaveRequestDto {
 
     private String name;
-    private String location;
+    private String address;
     private String phoneNumber;
     private String memo;
-    private String expirationDate;
+    private ContractRequestDto selectedDates;
 
     @Builder
-    public CustomerSaveRequestDto(String name, String location, String phoneNumber, String memo, String expirationDate) {
+    public CustomerSaveRequestDto(String name, String address, String phoneNumber, String memo, ContractRequestDto selectedDates) {
         this.name = name;
-        this.location = location;
+        this.address = address;
         this.phoneNumber = phoneNumber;
         this.memo = memo;
-        this.expirationDate = expirationDate;
+        this.selectedDates = selectedDates;
     }
 
     public Customer toEntity() {
         return Customer.builder()
                 .name(name)
-                .location(location)
+                .address(address)
                 .phoneNumber(phoneNumber)
                 .memo(memo)
-                .expirationDate(
-                        LocalDate.of(
-                                Integer.parseInt(expirationDate.substring(0, 4)),
-                                Month.of(Integer.parseInt(expirationDate.substring(4, 6))),
-                                Integer.parseInt(expirationDate.substring(6, 8))
-                        )
-                )
                 .build();
+    }
+
+    @Getter
+    @NoArgsConstructor
+    @ToString
+    public static class ContractRequestDto {
+
+        private int year;
+        private int month;
+        private List<Integer> dates;
+
+        @Builder
+        public ContractRequestDto(int year, int month, List<Integer> dates) {
+            this.year = year;
+            this.month = month;
+            this.dates = dates;
+        }
     }
 }

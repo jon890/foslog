@@ -26,22 +26,22 @@ public class Contract extends BaseTimeEntity {
      * 연도
      */
     @Column(nullable = false)
-    private String year;
+    private int year;
 
     /**
      * 달
      */
     @Column(nullable = false)
-    private String month;
+    private int month;
 
     /**
      * 날짜
      */
     @Column(nullable = false)
-    private String date;
+    private int date;
 
     @Builder
-    public Contract(Long customerId, String year, String month, String date) {
+    public Contract(Long customerId, int year, int month, int date) {
         this.customerId = customerId;
         this.year = year;
         this.month = month;

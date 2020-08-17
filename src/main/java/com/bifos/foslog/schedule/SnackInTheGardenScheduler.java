@@ -54,7 +54,8 @@ public class SnackInTheGardenScheduler {
                 message.append("<strong>").append(c.getName()).append("</strong>");
                 message.append(" 고객님은 ");
                 message.append("주문 날짜가 ");
-                message.append("<span style=`font-weight:600; color:red;`>").append(c.getExpirationDate()).append("</span>");
+                // todo kbt : 고쳐
+//                message.append("<span style=`font-weight:600; color:red;`>").append(c.getExpirationDate()).append("</span>");
                 message.append(" 까지 입니다!");
                 message.append("</p>");
             }

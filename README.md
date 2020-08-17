@@ -10,6 +10,7 @@ Caused by: java.sql.SQLException: Incorrect string value: '\xEA\xB9\x80\xEB\xB3\
 
 - [ ] 로그인 화면 만들기!
 
-- [ ] 고객 관리 시스템 만들기!
+- [ ] 고객 관리 시스템 만들기! (30%)  
+입력, 목록 까지 완료
 
 - [ ] Gmail Service 중 Deprecated 된 함수가 있는것 같으니 확인하기

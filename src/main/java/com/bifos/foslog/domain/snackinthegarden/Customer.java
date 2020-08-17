@@ -49,18 +49,13 @@ public class Customer extends BaseTimeEntity {
      * {@link Contract} 를 사용할 것
      */
     @Deprecated
-    @Column(nullable = false)
     private LocalDate expirationDate;
 
-    @Column
-    private Status status;
-
     @Builder
-    public Customer(String name, String location, String phoneNumber, String memo, LocalDate expirationDate) {
+    public Customer(String name, String address, String phoneNumber, String memo) {
         this.name = name;
-        this.address = location;
+        this.address = address;
         this.phoneNumber = phoneNumber;
         this.memo = memo;
-        this.expirationDate = expirationDate;
     }
 }

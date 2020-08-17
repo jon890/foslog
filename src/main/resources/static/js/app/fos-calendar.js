@@ -4,12 +4,13 @@ const fosCalendar = {
 
         if (calendar) {
             const now = new Date();
+            const year = now.getFullYear();
             const month = now.getMonth() + 1;
 
             now.setDate(1); // 이번 달의 첫 번째 날짜로 변경한다
             const firstDayOfWeek = now.getDay(); // 첫 번째 날짜의 요일을 가져온다
 
-            calendar.innerHTML = this.makeBaseCalendar(month);
+            calendar.innerHTML = this.makeBaseCalendar(year, month);
 
             const detailDays = calendar.querySelector(".fos-calendar__days");
             detailDays.innerHTML = this.makeDetailCalendar(month, firstDayOfWeek);
@@ -20,7 +21,7 @@ const fosCalendar = {
         }
     },
 
-    makeBaseCalendar(month) {
+    makeBaseCalendar(year, month) {
         return `
             <style>
                 .fos-calendar_wrapper {
@@ -65,7 +66,7 @@ const fosCalendar = {
             </style>
             
             <div class="fos-calendar_wrapper">
-                <p class="fos-calendar__title" data-month="${month}">${month} 월 주문표</p>
+                <p class="fos-calendar__title" data-year="${year}" data-month="${month}">${month} 월 주문표</p>
                 
                 <div class="fos-calendar__day-title">
                     <span class="fos-calendar__day-item">월</span>
@@ -125,13 +126,14 @@ const fosCalendar = {
         }
     },
 
-    getSelectedDays() {
+    getSelectedDates() {
         const monthObj = document.querySelector(".fos-calendar__title");
         const selectedDays = document.querySelectorAll(".fos-calendar__day-item[data-selected='true']");
 
         return {
+            "year": monthObj.dataset.year,
             "month": monthObj.dataset.month,
-            "days": Array.from(selectedDays).map(value => value.textContent)
+            "dates": Array.from(selectedDays).map(value => value.textContent)
         }
     }
 }
