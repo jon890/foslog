@@ -4,6 +4,7 @@ import com.bifos.foslog.domain.snackinthegarden.Contract;
 import com.bifos.foslog.domain.snackinthegarden.ContractRepository;
 import com.bifos.foslog.domain.snackinthegarden.Customer;
 import com.bifos.foslog.domain.snackinthegarden.CustomerRepository;
+import com.bifos.foslog.web.dto.CustomerDetailResponseDto;
 import com.bifos.foslog.web.dto.CustomerListResponseDto;
 import com.bifos.foslog.web.dto.CustomerSaveRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -40,18 +41,6 @@ public class SnackInTheGardenService {
         return list;
     }
 
-    @Transactional(readOnly = true)
-    public List<Customer> findAllExpirationDateAsc() {
-        return customerRepository.findAllExpirationDateAsc();
-    }
-
-    @Transactional(readOnly = true)
-    public List<Customer> findAllExpirationDateWithInXDays(int x) {
-        LocalDate today = LocalDate.now();
-        LocalDate noticeDate = today.plusDays(x);
-        return customerRepository.findAllExpirationDateWithInXDays(today, noticeDate);
-    }
-
     @Transactional
     public Long save(CustomerSaveRequestDto requestDto) {
 
@@ -72,5 +61,21 @@ public class SnackInTheGardenService {
         contractRepository.saveAll(contracts);
 
         return customerId;
+    }
+
+    @Transactional(readOnly = true)
+    public CustomerDetailResponseDto findById(Long id) {
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 고객이 없습니다. id=" + id));
+        List<Contract> contracts = contractRepository.findAllByCustomerId(customer.getId());
+        return new CustomerDetailResponseDto(customer, contracts);
+    }
+
+    @Deprecated
+    @Transactional(readOnly = true)
+    public List<Customer> findAllExpirationDateWithInXDays(int x) {
+        LocalDate today = LocalDate.now();
+        LocalDate noticeDate = today.plusDays(x);
+        return customerRepository.findAllExpirationDateWithInXDays(today, noticeDate);
     }
 }

@@ -93,7 +93,7 @@ const fosCalendar = {
         }
 
         for (let i = 1; i <= monthDays[month]; i++) {
-            returnValue += `<span class="fos-calendar__day-item">${i}</span>`
+            returnValue += `<span class="fos-calendar__day-item" data-date="${i}">${i}</span>`
         }
 
         return returnValue;
@@ -135,6 +135,14 @@ const fosCalendar = {
             "month": monthObj.dataset.month,
             "dates": Array.from(selectedDays).map(value => value.textContent)
         }
+    },
+
+    setData({year, month, date}) {
+        // todo kbt : 선택한 연도, 달 변경..
+        const monthObj = document.querySelector(".fos-calendar__title");
+
+        const selectedDays = document.querySelector(`.fos-calendar__day-item[data-date="${date}"]`);
+        selectedDays.dataset.selected = "true";
     }
 }
 

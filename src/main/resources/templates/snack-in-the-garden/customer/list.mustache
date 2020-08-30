@@ -7,7 +7,7 @@
 
     <div class="button-wrapper" style="margin-top:25px;">
         <div class="right">
-            <a href="/snack-in-the-garden/customer/add" class="button blue">회원 추가</a>
+            <a href="/snack-in-the-garden/customer/save" class="button blue">회원 추가</a>
         </div>
     </div>
 
@@ -28,7 +28,7 @@
         </tr>
 
         {{#customers}}
-            <tr>
+            <tr data-id="{{id}}" class="customers clickable">
                 <td>{{rowNumber}}</td>
                 <td>{{name}}</td>
                 <td>{{phoneNumber}}</td>

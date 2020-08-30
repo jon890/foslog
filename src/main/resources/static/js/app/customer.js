@@ -23,13 +23,17 @@ const customer = {
 
                 if (response) {
                     alert("성공적으로 저장 되었습니다!");
+                    location.href = "/snack-in-the-garden/customer/list";
                 } else {
                     alert("오류가 발생했습니다.\n계속해서 발생하면 관리자에게 문의하세요\njon89071@gmail.com");
                 }
-
-                location.href = "/snack-in-the-garden/customer/list";
             });
         }
+
+        // 리스트 아이템 클릭 이벤트
+        const customerList = document.querySelectorAll(".customers");
+        Array.from(customerList)
+            .forEach(domObject => domObject.addEventListener("click", this.moveCustomerDetail));
     },
 
     async saveCustomer() {
@@ -45,6 +49,14 @@ const customer = {
         };
 
         return await ApiUtils.request(`/api/v1/customers`, data);
+    },
+
+    moveCustomerDetail() {
+        console.log("BiFoS : moveCustomerDetail");
+        console.log(this);
+
+        const id = this.dataset.id;
+        location.href = `/snack-in-the-garden/customer/detail?customerId=${id}`;
     }
 }
 

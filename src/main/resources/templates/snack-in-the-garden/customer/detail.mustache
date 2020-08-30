@@ -1,0 +1,63 @@
+{{>layout/header}}
+{{>snack-in-the-garden/style}}
+{{>snack-in-the-garden/left-menu}}
+
+<div class="contents">
+    <h1 class="contents__title" style="margin-top:25px;">회원 상세</h1>
+
+    <article>
+        <form name="customer-form">
+            <table class="table-list">
+                <tr>
+                    <th class="table__title">이름</th>
+                    <td><input type="text" name="name" value="{{customer.name}}"/></td>
+                </tr>
+
+                <tr>
+                    <th class="table__title">주소</th>
+                    <td><input type="text" name="address" value="{{customer.address}}"/></td>
+                </tr>
+
+                <tr>
+                    <th class="table__title">연락처</th>
+                    <td><input type="text" name="phoneNumber" value="{{customer.phoneNumber}}"/></td>
+                </tr>
+
+                <tr>
+                    <th class="table__title">메모</th>
+                    <td><textarea name="memo">{{customer.memo}}</textarea></td>
+                </tr>
+
+                <tr>
+                    <th class="table__title">계약 기간</th>
+                    <td class="fos-calendar"></td>
+                </tr>
+            </table>
+
+            <div class="button-wrapper">
+                <div class="right">
+                    <a href="#" class="button red backButton">뒤로</a>
+                    <a href="#" class="button blue submitButton">수정</a>
+                </div>
+            </div>
+        </form>
+    </article>
+</div>
+
+<!-- read fos calendar -->
+<script src="/js/app/fos-calendar.js"></script>
+<script>
+    console.log("BiFoS : value of contracts");
+    console.log(`{{#customer.contracts}}{{year}}-{{month}}-{{date}}{{/customer.contracts}}, `);
+        {{#customer.contracts}}
+        fosCalendar.setData(
+                {
+                    "year": {{year}},
+                    "month": {{month}},
+                    "date": {{date}}
+                }
+        );
+        {{/customer.contracts}}
+</script>
+
+{{>layout/footer}}

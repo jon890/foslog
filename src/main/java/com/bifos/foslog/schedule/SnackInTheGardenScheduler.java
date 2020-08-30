@@ -32,6 +32,7 @@ public class SnackInTheGardenScheduler {
     /**
      * 매일 새벽 한 시에 계약일이 곧 만료되는 사람을 알린다
      */
+    @Deprecated
     @Scheduled(cron = "0 0 10 * * *", zone = "Asia/Seoul")
     public void noticeExpirationDateWithInXDays() throws Exception {
 

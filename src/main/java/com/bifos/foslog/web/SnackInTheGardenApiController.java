@@ -1,13 +1,12 @@
 package com.bifos.foslog.web;
 
 import com.bifos.foslog.service.snackinthegarden.SnackInTheGardenService;
+import com.bifos.foslog.web.dto.CustomerDetailResponseDto;
 import com.bifos.foslog.web.dto.CustomerSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RequiredArgsConstructor
@@ -23,5 +22,10 @@ public class SnackInTheGardenApiController {
         logger.debug("BiFoS : /api/v1/customers 데이터");
         logger.debug(requestDto.toString());
         return service.save(requestDto);
+    }
+
+    @GetMapping("/api/v1/customers/{id}")
+    public CustomerDetailResponseDto findById(@PathVariable Long id) {
+        return service.findById(id);
     }
 }
