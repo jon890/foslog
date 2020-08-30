@@ -21,6 +21,8 @@ public class CustomerRepositoryTest {
 
     @Before
     public void setUp() {
+        CustomerState state = CustomerState.DELIVERING;
+
         String name1 = "김유선";
         String address1 = "동림동 운암산 풍경채 101동 203호";
 
@@ -33,16 +35,19 @@ public class CustomerRepositoryTest {
         customerRepository.save(customerRepository.save(Customer.builder()
                 .name(name1)
                 .address(address1)
+                .customerState(state)
                 .build()));
 
         customerRepository.save(customerRepository.save(Customer.builder()
                 .name(name2)
                 .address(address2)
+                .customerState(state)
                 .build()));
 
         customerRepository.save(customerRepository.save(Customer.builder()
                 .name(name3)
                 .address(address3)
+                .customerState(state)
                 .build()));
     }
 
@@ -56,11 +61,13 @@ public class CustomerRepositoryTest {
         // given
         String name = "김유선";
         String address = "동림동 운암산 풍경채 101동 203호";
+        CustomerState state = CustomerState.DELIVERING;
 
         customerRepository.deleteAll();
         customerRepository.save(Customer.builder()
                 .name(name)
                 .address(address)
+                .customerState(state)
                 .build());
 
         // when

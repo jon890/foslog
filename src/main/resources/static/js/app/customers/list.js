@@ -8,7 +8,7 @@ const customerList = {
         const listItems = document.querySelectorAll(".customers")
 
         if (listItems.length > 0) {
-            Array.from(customerList)
+            Array.from(listItems)
                 .forEach(domObject => domObject.addEventListener("click", this.moveCustomerDetail));
         }
     },

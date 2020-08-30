@@ -28,4 +28,5 @@ public class SnackInTheGardenApiController {
     public CustomerDetailResponseDto findById(@PathVariable Long id) {
         return service.findById(id);
     }
+
 }

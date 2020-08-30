@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Getter
 @NoArgsConstructor
@@ -44,18 +43,17 @@ public class Customer extends BaseTimeEntity {
     private String memo;
 
     /**
-     * 거래 종료 날짜 (샐러드 계약 만료 일자)
-     *
-     * {@link Contract} 를 사용할 것
+     * 상태
      */
-    @Deprecated
-    private LocalDate expirationDate;
+    @Column(nullable = false)
+    private CustomerState customerState;
 
     @Builder
-    public Customer(String name, String address, String phoneNumber, String memo) {
+    public Customer(String name, String address, String phoneNumber, String memo, CustomerState customerState) {
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.memo = memo;
+        this.customerState = customerState;
     }
 }

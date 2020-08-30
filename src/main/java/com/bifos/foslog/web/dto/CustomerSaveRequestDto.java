@@ -1,6 +1,7 @@
 package com.bifos.foslog.web.dto;
 
 import com.bifos.foslog.domain.snackinthegarden.Customer;
+import com.bifos.foslog.domain.snackinthegarden.CustomerState;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,6 +35,7 @@ public class CustomerSaveRequestDto {
                 .address(address)
                 .phoneNumber(phoneNumber)
                 .memo(memo)
+                .customerState(CustomerState.NOT_USED)
                 .build();
     }
 

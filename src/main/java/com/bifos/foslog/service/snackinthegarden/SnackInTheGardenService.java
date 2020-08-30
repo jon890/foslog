@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -74,8 +73,6 @@ public class SnackInTheGardenService {
     @Deprecated
     @Transactional(readOnly = true)
     public List<Customer> findAllExpirationDateWithInXDays(int x) {
-        LocalDate today = LocalDate.now();
-        LocalDate noticeDate = today.plusDays(x);
-        return customerRepository.findAllExpirationDateWithInXDays(today, noticeDate);
+        return customerRepository.findAll();
     }
 }
